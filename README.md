@@ -1,4 +1,4 @@
-# simple rest libray for PHP
+# Simple rest library - PHP
 * server, client
 * support GET, POST, PUT and DELETE methods
 
