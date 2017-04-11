@@ -98,14 +98,13 @@ class RestClient
     public function init()
     {
         $this->_curlOptions = array(
-                            CURLOPT_CONNECTTIMEOUT  => self::CONNECT_TIMEOUT,
-                            CURLOPT_TIMEOUT         => self::EXEC_TIMEOUT,
-                            CURLOPT_RETURNTRANSFER  => TRUE,
-                            CURLOPT_HEADER          => FALSE,
-                            CURLOPT_FRESH_CONNECT   => FALSE,
-                            CURLOPT_HTTP_VERSION    => CURL_HTTP_VERSION_NONE,
-                        );
-
+            CURLOPT_CONNECTTIMEOUT  => self::CONNECT_TIMEOUT,
+            CURLOPT_TIMEOUT         => self::EXEC_TIMEOUT,
+            CURLOPT_RETURNTRANSFER  => TRUE,
+            CURLOPT_HEADER          => FALSE,
+            CURLOPT_FRESH_CONNECT   => FALSE,
+            CURLOPT_HTTP_VERSION    => CURL_HTTP_VERSION_NONE,
+        );
         $this->_result = NULL;
         $this->_headers = array();
 
