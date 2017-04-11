@@ -163,4 +163,19 @@ class RestUtil
 
         return $mime;
     }
+
+    /**
+     * getServer
+     *
+     * @static
+     * @access public
+     * @param  string $key
+     * @return string or NULL
+     */
+    public static function getServer( $key )
+    {
+        if( !isset($_SERVER[$key]) ) return NULL;
+
+        return $_SERVER[$key];
+    }
 }

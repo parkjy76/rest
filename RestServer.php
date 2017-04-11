@@ -82,7 +82,10 @@ class RestServer
      */
     public function getRequestMethod()
     {
-        return HttpRequest::getMethod();
+        if( isset($_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE']) ) return $_SERVER['HTTP_X_HTTP_METHOD_OVERRIDE'];
+        elseif( isset($_SERVER['REQUEST_METHOD']) ) return $_SERVER['REQUEST_METHOD'];
+
+        return NULL;
     }
 
     /**
@@ -124,7 +127,7 @@ class RestServer
     {
         static $ret;
 
-        $type = HttpRequest::getServer('HTTP_ACCEPT');
+        $type = RestUtil::getServer('HTTP_ACCEPT');
         if( !strlen($type) ) $ret = NULL;
         else
         {
@@ -154,7 +157,7 @@ class RestServer
      */
     public function getRemoteAddress()
     {
-        return HttpRequest::getServer('REMOTE_ADDR');
+        return RestUtil::getServer('REMOTE_ADDR');
     }
 
     /**
@@ -165,8 +168,8 @@ class RestServer
      */
     private function _getContentType()
     {
-        $type = HttpRequest::getServer('HTTP_CONTENT_TYPE');
-        if( !strlen($type) ) $type = HttpRequest::getServer('CONTENT_TYPE');
+        $type = RestUtil::getServer('HTTP_CONTENT_TYPE');
+        if( !strlen($type) ) $type = RestUtil::getServer('CONTENT_TYPE');
 
         return $type;
     }
